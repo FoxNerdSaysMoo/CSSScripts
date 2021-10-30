@@ -22,10 +22,14 @@ while True:
             edit <selector> <tag> <new value> - change style of selector
             add <selector> <css string> - add style
             view - view current style
+            url <style> - get raw file URL for the style
         """)
     elif cmd.startswith("select"):
         name = cmd.split()[1]
-        style = open("css/header.css", "r").read() + open("css/"+name+".css", "r").read()
+        style = open("css/"+name+".css", "r").read()
+    elif cmd.startswith("url"):
+        name = cmd.split()[1]
+        print(f"https://github.com/FoxNerdSaysMoo/CSSScripts/raw/master/css/{name}.css")
     elif cmd == "list":
         print("\n".join(os.listdir("css")))
     elif cmd == "view":
